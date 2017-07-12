@@ -1,8 +1,11 @@
 #!/usr/bin/env python
-#Program:
-#This program will write change note into Excel.
-#History:
-#20170706 Kuanlin Chen
+
+"""
+Program:
+This program will write change note into Excel.
+History:
+20170706 Kuanlin Chen
+"""
 
 import subprocess
 import sys
@@ -16,9 +19,6 @@ checkresult = "OK"
 
 book = xlwt.Workbook(encoding="utf-8")
 sheet1 = book.add_sheet("Sheet 1")
-
-#sincedate = "2017-06-25"
-#command = 'repo forall -c \'git log --oneline --date=format:"%Y-%m-%d" --pretty="<<<$REPO_PROJECT<<<%s\n\n%b<<<%cd<<<%an>>>" --name-only --since="2017-05-25"\''
 
 def main(orig_args):
     sincedate = raw_input("Since which Date? (yyyy-mm-dd) ")

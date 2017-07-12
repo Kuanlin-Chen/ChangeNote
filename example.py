@@ -13,11 +13,11 @@ import subprocess
 import string
 import codecs
 
-filename = "example.xls"
 book = xlwt.Workbook(encoding="utf-8")
 sheet1 = book.add_sheet("Sheet1")
 
 def main(orig_args):
+	filename = "example.xls"
 	output(filename)
 
 def output(filename):
