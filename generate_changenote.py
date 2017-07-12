@@ -33,11 +33,10 @@ def main(orig_args):
 def output(filename,sincedate):
     #Set up column size
     default_width = 256 * 20
-    #sheet1.write(0,0,'Commit ID')
+
     sheet1.write(0,0,'Defect Description')
     sheet1.write(0,1,'Developer')
     sheet1.write(0,2,'Fixed on Date')
-    #sheet1.write(0,3,'Repo Project')
     sheet1.write(0,3,'Changed File')
     sheet1.write(0,4,'TD Issue')
     sheet1.write(0,5,'Detected')
@@ -48,17 +47,15 @@ def output(filename,sincedate):
 
     proc = subprocess.Popen('repo forall -c \'git log --oneline --no-merges --date=format:"%Y-%m-%d" --pretty="<<%cd<<%an<<%s\n\n%b>>" --name-only --since='+sincedate+'\'',shell=True, stdout=subprocess.PIPE)
     text = proc.stdout.read()
-    #print(text)
-    #Split output by >>>
+
+    #Split output by >>
     #Notice that changed file will be output in the last space which after >>>.
     #So we need to modify the place of changed file later.
     s = string.split(text,'\n>>')
-    #print(s)
     i = 1
     for line in s:
         j = 3
         innerline = string.split(line,'<<')
-        #print(innerline)
         sheet1.row(i).height_mismatch = True
         sheet1.row(i).height = 256*2
         for line in innerline:
